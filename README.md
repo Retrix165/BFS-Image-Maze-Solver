@@ -22,3 +22,35 @@ How to Use:
     EX: img = Image.open("/TestMazes/TestMaze1.png")
  
   -Execute BreadthFirstSearchImage.py
+  
+Instruction to Create Own Maze  (capitalized colors have specific RGB/RGBA values):
+
+  -Access image creating program/website with pixel specific editing tools
+    EX: https://www.pixilart.com/
+    
+  -Setup initial maze with a BLACK outer border and WHITE inner area
+    EX: See TestMaze 1-4
+  
+  -Add a single RED pixel to act as start
+    EX: See TestMaze 1-4
+  
+  -Add a single BLUE pixel to act as goal
+    EX: See TestMaze 1-4
+  
+  -Add any obstacles or path restrictions with BLACK pixels
+    EX: See TestMaze 1-4
+  
+  -Save image as PNG
+  
+  Color Specifications (RGB/RGBA):
+  
+    -BLACK: (0,0,0) / (0,0,0,255)
+    
+    -WHITE: (255,255,255) / (255,255,255,255)
+    
+    -RED: (233,30,99) / (233,30,99,255)
+    
+    -BLUE (63,81,181) / (63,81,181,255)
+    
+  -WARNING: Personal computers/image creation software may interpret/save colors differently and raise an Unrecognized Color Value Exception. To fix, edit the ImageHandle.py file's pixToSym function. The conditional of that function checks for a BLACK, WHITE, RED, and BLUE color in that order. Change the corresponding tuple of the intended color to the color tuple given in the exception.
+
