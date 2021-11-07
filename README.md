@@ -6,7 +6,19 @@ Intended Outcome:
 
 Intended Process: 
   -Read in the maze image using Image module from PIL 
+  
   -Convert image into a 2D array of int values based on the color of each pixel 
+  
   -Use the BFS algorithm to find shortest, starting from start pixel, tot the goal pixel 
+  
   -When the BFS algorithm reaches the goal pixel, retrace the steps and send back the path 
+  
   -Apply the path to the 2D grid and convert the grid back into an image
+  
+How to Use:
+  -Clone repository
+  
+  -Input path from current directory to test maze image desired in BreadthFirstSearchImage.py in main function
+    EX: img = Image.open("/TestMazes/TestMaze1.png")
+ 
+  -Execute BreadthFirstSearchImage.py
