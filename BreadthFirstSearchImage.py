@@ -11,11 +11,13 @@ sur_nodes = ((-1,0),(0,-1),(0,1),(1,0))
 #Function to run BFS
 def bfs_img(img: Image) -> Image:
 
-    #Set up matrix and initial state of vars
+    #INTIAL SETUP OF MATRIX AND LISTS
     matrix = imgToMatrix(img)
     start, goal = find_start_end(matrix)
     yet_to_see.append(Coordinate(start[0],start[1], None))
     goal_node = None
+
+    #BFS LOOP
 
     #While there are nodes left to check
     while yet_to_see:
@@ -24,6 +26,8 @@ def bfs_img(img: Image) -> Image:
         cur_node = yet_to_see[0]
         del yet_to_see[0]
 
+        #flag to break search if goal is found
+        found = False
 
         #check surrounding nodes to add to yet to see list
         for r in sur_nodes:
@@ -38,14 +42,20 @@ def bfs_img(img: Image) -> Image:
                     #Remember goal node when found
                     if matrix[t_y][t_x] == 'F':
                         goal_node = tmp_node
-
+                        found = True
 
         #Mark seen node on matrix OPTIONAL
-        #matrix[cur_node.y][cur_node.x] = 'A'
+        matrix[cur_node.y][cur_node.x] = 'A'
+
+        if found:
+            break
 
         #add seen node to already seen list
         already_seen.append(cur_node)
 
+
+
+    #ENDING GRAPHICS CODE
 
     #Mark path from goal_node
     if goal_node is not None:
@@ -93,9 +103,14 @@ def check_seen_coord(y:int, x:int) -> bool:
 
 
 #""" Testing Code
+def main():
+    #Input path to image mazes here
+    maze_name = input("Enter the name of maze to search: ")
+    img = Image.open("../TestMazes/"+maze_name)
+    result_img = bfs_img(img)
+    result_img.show()
 
-img = Image.open("../TestMazes/SusMaze.png")
-result_img = bfs_img(img)
-result_img.show()
+if __name__ == "__main__":
+    main()
 
 #"""End of Testing Code
